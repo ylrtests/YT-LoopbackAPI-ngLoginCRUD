@@ -27,8 +27,7 @@ export class DataApiService {
   book: Observable<any>;
 
   getAllBooks(){
-    //Retorna libros sin oferta, solo usuarios autenticados pueden ver con oferta.
-    return this.http.get(`${this.URL_API}/books?filter[where][oferta]=0`);
+    return this.http.get(`${this.URL_API}/books`);
   }
 
   getBookById(id: string){
@@ -37,6 +36,11 @@ export class DataApiService {
 
   getOffers(){
     return (this.books = this.http.get(`${this.URL_API}/books?filter[where][oferta]=1`));
+  }
+
+  getNoOffers(){
+    //Retorna libros sin oferta, solo usuarios autenticados pueden ver con oferta.
+    return this.http.get(`${this.URL_API}/books?filter[where][oferta]=0`);
   }
 
   saveBook(book: Book){
