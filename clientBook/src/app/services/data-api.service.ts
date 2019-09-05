@@ -4,10 +4,18 @@ import { Observable } from 'rxjs/internal/Observable';
 import { AuthService } from "./auth.service";
 import { map } from 'rxjs/operators';
 
+import { Book }  from '../models/Book';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DataApiService {
+  
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
+
   URL_API: String = 'http://localhost:3000/api';
   
   headers: HttpHeaders = new HttpHeaders ({
@@ -17,11 +25,6 @@ export class DataApiService {
 
   books: Observable<any>;
   book: Observable<any>;
-  
-  constructor(
-    private http: HttpClient,
-    private authService: AuthService
-  ) {}
 
   getAllBooks(){
     //Retorna libros sin oferta, solo usuarios autenticados pueden ver con oferta.
@@ -36,19 +39,19 @@ export class DataApiService {
     return (this.books = this.http.get(`${this.URL_API}/books?filter[where][oferta]=1`));
   }
 
-  saveBooks(books){
+  saveBook(book: Book){
     //TODO: Obtener token.
     //TODO: not null
     let token = this.authService.getToken();
-    return this.http.post(`${this.URL_API}/books?access_token=${token}`,books, {headers: this.headers})
+    return this.http.post<Book>(`${this.URL_API}/books?access_token=${token}`,book, {headers: this.headers})
       .pipe(map( data => data));
   }
 
-  updateBook(book){
+  updateBook(book: Book){
     //TODO: Obtener token.
     //TODO: not null
     let token = this.authService.getToken();
-    return this.http.put(`${this.URL_API}/books?access_token=${token}`,book, {headers: this.headers})
+    return this.http.put<Book>(`${this.URL_API}/books?access_token=${token}`,book, {headers: this.headers})
       .pipe(map( data => data));
   }
 
@@ -56,7 +59,7 @@ export class DataApiService {
     //TODO: Obtener token.
     //TODO: not null
     let token = this.authService.getToken();
-    return this.http.delete(`${this.URL_API}/books/${id}?access_token=${token}`, {headers: this.headers})
+    return this.http.delete<Book>(`${this.URL_API}/books/${id}?access_token=${token}`, {headers: this.headers})
       .pipe(map( data => data));
   }
 }

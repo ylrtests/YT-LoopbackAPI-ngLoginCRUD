@@ -21,16 +21,16 @@ export class AuthService {
   ) {}
 
   registerUser(user: User){
-    return this.http.post(`${this.URL_API}/Users`, user, {headers: this.headers})
+    return this.http.post<User>(`${this.URL_API}/Users`, user, {headers: this.headers})
       .pipe( map(data => data));
   }
 
   loginUser(user: User): Observable<any>{
-    return this.http.post(`${this.URL_API}/Users/login?include=user`, user, {headers: this.headers})
+    return this.http.post<User>(`${this.URL_API}/Users/login?include=user`, user, {headers: this.headers})
       .pipe( map(data => data));
   }
 
-  setUser(user){
+  setUser(user: User){
     let user_string = JSON.stringify(user);
     localStorage.setItem('currentUser', user_string)
   }
@@ -43,10 +43,10 @@ export class AuthService {
     return localStorage.getItem("accessToken");
   }
 
-  getCurrentUser(){
+  getCurrentUser(): User{
     let user_string = localStorage.getItem("currentUser");
     if(!isNullOrUndefined (user_string)){
-      let user = JSON.parse(user_string);
+      let user: User = JSON.parse(user_string);
       return user;
     }
     else{

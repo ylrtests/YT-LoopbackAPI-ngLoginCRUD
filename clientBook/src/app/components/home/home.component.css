@@ -1,0 +1,39 @@
+#books{
+    border-radius: 0.25rem;
+    background-color: #f9f9f9 !important;
+}
+
+section{
+    padding: 20px 0;
+}
+
+#books .card{
+    border:none;
+    background: #fff;
+}
+.card-book{
+    position: relative;
+    transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+.card-book .card{
+    min-height: 312px;
+}
+
+p.card-text,
+h4.card-title{
+    min-height: 96px !important;
+}
+
+.card-title{
+    color: #007bff;
+    cursor: pointer;
+}
+
+.card-book .card .card-body img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}

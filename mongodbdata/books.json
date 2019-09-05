@@ -1,0 +1,64 @@
+[
+
+    {
+        "titulo": "Web Design with HTML, CSS, JavaScript and jQuery Set",
+        "idioma": "Inglés",
+        "descripcion": "This two-book set combines the titles HTML & CSS: Designing and Building Web Sites and JavaScript & jQuery: Interactive Front-End Development. Together these two books form an ideal platform for anyone who wants to master HTML and CSS before stepping up to JavaScript and jQuery.",
+        "portada": "https://images-na.ssl-images-amazon.com/images/I/41T53nRtyoL._SX435_BO1,204,203,200_.jpg",
+        "precio": "$27.82",
+        "link_amazon": "https://www.amazon.com/Web-Design-HTML-JavaScript-jQuery/dp/1118907442/ref=sr_1_1?keywords=web+development&qid=1567711838&s=books&sr=1-1",
+        "autor": "Jon Duckett ",
+        "oferta": 0
+    },
+    {
+        "titulo": "Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Graphics",
+        "idioma": "Inglés",
+        "descripcion": "Do you want to build web pages but have no prior experience? This friendly guide is the perfect place to start. You’ll begin at square one, learning how the web and web pages work, and then steadily build from there. By the end of the book, you’ll have the skills to create a simple site with multicolumn pages that adapt for mobile devices.",
+        "portada": "https://images-na.ssl-images-amazon.com/images/I/51iVcZUGuoL._SX408_BO1,204,203,200_.jpg",
+        "precio": "$15.82",
+        "link_amazon": "https://www.amazon.com/Learning-Web-Design-Beginners-JavaScript/dp/1491960205/ref=sr_1_2?keywords=web+development&qid=1567711838&s=books&sr=1-2",
+        "autor": "Jennifer Robbins",
+        "oferta": 0
+    },
+    {
+        "titulo": "Web Development and Design Foundations with HTML5 (9th Edition) (What's New in Computer Science)",
+        "idioma": "Inglés",
+        "descripcion": "For courses in web development and design.",
+        "portada": "https://images-na.ssl-images-amazon.com/images/I/51wmBIh86KL._SX388_BO1,204,203,200_.jpg",
+        "precio": "32.16",
+        "link_amazon": "https://www.amazon.com/Development-Design-Foundations-Computer-Science/dp/0134801148/ref=sr_1_3?keywords=web+development&qid=1567711838&s=books&sr=1-3",
+        "autor": "Terry Felke-Morris",
+        "oferta": 0
+    },
+    {
+        "titulo": "Web Coding & Development All-in-One For Dummies (For Dummies (Computer/Tech)",
+        "idioma": "Inglés",
+        "descripcion": "With more high-paying web development jobs opening every day, people with coding and web/app building skills are having no problems finding employment",
+        "portada": "https://images-na.ssl-images-amazon.com/images/I/515k7GcxxvL._SX397_BO1,204,203,200_.jpg",
+        "precio": "32.26",
+        "link_amazon": "https://www.amazon.com/Coding-Development-All-Dummies-Computer/dp/1119473926/ref=sr_1_4?keywords=web+development&qid=1567711838&s=books&sr=1-4",
+        "autor": "Paul McFedrie",
+        "oferta": 0
+      },
+      {
+        "titulo": "Fundamentals of Web Development (2nd Edition)",
+        "idioma": "Inglés",
+        "descripcion": "For courses in Web Programming and Design: Numerous Mark-up / Scripting Languages, as part of the CS1 course sequence.",
+        "portada": "https://images-na.ssl-images-amazon.com/images/I/51xEzGTH6lL._SX402_BO1,204,203,200_.jpg",
+        "precio": "117.32",
+        "link_amazon": "https://www.amazon.com/Fundamentals-Web-Development-Randy-Connolly/dp/0134481267/ref=sr_1_5?keywords=web+development&qid=1567711838&s=books&sr=1-5",
+        "autor": "Ricardo Hoar",
+        "oferta": 0
+      },
+      {
+        "titulo": "string",
+        "idioma": "Inglés",
+        "descripcion": "string",
+        "portada": "string",
+        "precio": "string",
+        "link_amazon": "string",
+        "autor": "string",
+        "oferta": 0
+      }
+
+]

@@ -1,1 +1,18 @@
-<p>home works!</p>
+<section id="books">
+    <div class="container">
+        <div class="row">
+            <div *ngFor ="let book of books" class="col-xs-12 col-sm-6 col-md-4">
+                <div class="card-book">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="card-img-top" src="{{book.portada}}" alt="{{book.titulo}}">
+                            <h4 routerLink="/book/{{book.id}}" class="card-title">{{book.titulo}}</h4>
+                            <p class="card-text">{{book.descripcion}}</p>
+                            <a href="{{book.link_amazon}}" class="btn btn-block btn-primary" target="_blank">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
