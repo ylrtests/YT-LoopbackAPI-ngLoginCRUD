@@ -3,13 +3,13 @@
         {  
                 "email":"yojhan@gmail.com",
                 "password":"123456",    
-                "username":"yojhan"
+                "name":"yojhan"
         },
 
         {  
                 "email":"leonardo@gmail.com",
                 "password":"123456",    
-                "username":"leonardo"
+                "name":"leonardo"
         }
 
 
