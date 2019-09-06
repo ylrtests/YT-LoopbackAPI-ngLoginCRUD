@@ -10,14 +10,15 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
 import { AuthGuard } from "./guards/auth.guard";
+import { AnonymousGuard } from "./guards/anonymous.guard";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'offers', component: OffersComponent, canActivate: [AuthGuard] }, //Only users auth
   { path: 'book/:id', component: DetailsBookComponent },
   { path: 'admin/list-books', component: ListBooksComponent, canActivate: [AuthGuard] }, //Only users auth
-  { path: 'user/login', component: LoginComponent },
-  { path: 'user/register', component: RegisterComponent },
+  { path: 'user/login', component: LoginComponent, canActivate: [AnonymousGuard] },
+  { path: 'user/register', component: RegisterComponent, canActivate:[AnonymousGuard] },
   { path: 'user/profile', component: ProfileComponent, canActivate: [AuthGuard] }, //Todo: only users auth
   { path: '**', component: Page404Component }
 ];

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       (data) => {
         this.authService.setUser(data.user);
         this.authService.setToken(data.id);
-        this.router.navigate(['/user/profile'])
+        this.router.navigate(['/user/profile']);
       },
       (err) => {
         console.log(err)

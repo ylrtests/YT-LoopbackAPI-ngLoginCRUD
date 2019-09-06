@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -14,13 +15,21 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   public appName = "Books Store";
-  isLogged: boolean = false;
+
+  private isLoggedIn: boolean;
+
 
   ngOnInit() {
     this.onCheckUser();
+
+    let subscriberLoggedUser = this.authService.isLoggedIn.subscribe(value => {
+      console.log("Subscription got", value);
+      this.isLoggedIn = value;
+    });
+
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logoutUser().subscribe(
       (res) => {
         console.log("Logout...")
@@ -28,13 +37,8 @@ export class NavbarComponent implements OnInit {
     )
   }
 
-  onCheckUser ():void{
-    if(this.authService.getCurrentUser() === null) {
-      this.isLogged = false
-    }
-    else{
-      this.isLogged = true;
-    }
+  onCheckUser(): void {
+    this.authService.getCurrentUser()
   }
 
 }

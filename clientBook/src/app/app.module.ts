@@ -20,6 +20,9 @@ import { Page404Component } from './components/page404/page404.component';
 import { DataApiService } from './services/data-api.service';
 import { ModalComponent } from './components/admin/list-books/modal/modal.component';
 
+//Pipes
+import { TruncateTextPipe  } from './pipes/truncate-text.pipe'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,8 @@ import { ModalComponent } from './components/admin/list-books/modal/modal.compon
     RegisterComponent,
     ProfileComponent,
     Page404Component,
-    ModalComponent
+    ModalComponent,
+    TruncateTextPipe
   ],
   imports: [
     BrowserModule,
