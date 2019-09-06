@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
     this.dataApi.getAllBooks().subscribe( 
       (books: Book[]) => {
         this.books = books;
-        console.log(this.books)
       },
       (err) =>{
         console.log(">>Error getting getAllBooks<<")

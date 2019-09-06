@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+code {
+    margin-bottom: 15px;
+    font-size: 0.7rem;
+    display: block;
+    background-color: whitesmoke;
+}

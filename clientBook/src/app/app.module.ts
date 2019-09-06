@@ -18,6 +18,7 @@ import { Page404Component } from './components/page404/page404.component';
 
 //Services
 import { DataApiService } from './services/data-api.service';
+import { ModalComponent } from './components/admin/list-books/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { DataApiService } from './services/data-api.service';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    Page404Component
+    Page404Component,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

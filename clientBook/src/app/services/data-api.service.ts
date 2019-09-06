@@ -51,11 +51,11 @@ export class DataApiService {
       .pipe(map( data => data));
   }
 
-  updateBook(book: Book){
+  updateBook(book: Book, id: string){
     //TODO: Obtener token.
     //TODO: not null
     let token = this.authService.getToken();
-    return this.http.put<Book>(`${this.URL_API}/books?access_token=${token}`,book, {headers: this.headers})
+    return this.http.put<Book>(`${this.URL_API}/books/${id}?access_token=${token}`,book, {headers: this.headers})
       .pipe(map( data => data));
   }
 
@@ -66,4 +66,5 @@ export class DataApiService {
     return this.http.delete<Book>(`${this.URL_API}/books/${id}?access_token=${token}`, {headers: this.headers})
       .pipe(map( data => data));
   }
+
 }

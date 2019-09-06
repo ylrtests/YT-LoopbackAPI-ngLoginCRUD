@@ -26,19 +26,21 @@ export class RegisterComponent implements OnInit {
 
   onRegister(): void {
     this.authService.registerUser(this.user).subscribe(
-      (res) => {
-        console.log(">>Response register: ")
-        console.log(res)
+      () => {
         this.authService.loginUser(this.user).subscribe(
           (data) => {
-            console.log(">>Response login: ");
-            console.log(data);
             let token = data.id;
             this.authService.setToken(token);
             this.authService.setUser(data.user);
             this.router.navigate(['/user/profile']);
+          },
+          (err) => {
+            console.log("Error iniciando sesión usuario.")
           }
         )
+      },
+      (err) => {
+        console.log("Error registrando usuario.")
       }
     )
   }

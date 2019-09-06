@@ -1,0 +1,73 @@
+<!-- Modal -->
+<div class="modal fade" id="modalBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{selectedBook.id ? 'Actualizar libro' : 'Nuevo libro'}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <code>{{selectedBook | json}}</code>
+                <form class="form-book" #formBook ="ngForm" (ngSubmit)="onSaveBook(formBook)">
+                    <div class="form-group">
+                        <label for="titulo">Titulo</label>
+                        <input id="titulo" [(ngModel)]= "selectedBook.titulo" name="titulo" type="text" placeholder="Title" class="form-control">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="idioma">Idioma</label>
+                            <select id="idioma" name="idioma" class="form-control" [(ngModel)]= "selectedBook.idioma">
+                                <option value="Inglés">Inglés</option>
+                                <option value="Castellano">Castellano</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="precio">Precio</label>
+                            <input id="precio" name="precio" [(ngModel)]= "selectedBook.precio" type="text" placeholder="0" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="autor">Autor</label>
+                            <input id="autor" name="autor" type="text" [(ngModel)]= "selectedBook.autor" placeholder="Autor" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="oferta">Oferta</label>
+                            <select id="oferta" name="oferta" class="form-control" [(ngModel)]= "selectedBook.oferta">
+                                <option value="1">Si</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="portada">Portada</label>
+                            <input id="portada" name="portada" type="text" [(ngModel)]= "selectedBook.portada" placeholder="Portada" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="link_amazon">Link Amazon</label>
+                            <input id="link_amazon" name="link_amazon" [(ngModel)]= "selectedBook.link_amazon" type="text" placeholder="Link Amazon"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea name="descripcion" id="descripcion" [(ngModel)]= "selectedBook.descripcion" cols="50" rows="10"
+                            class="form-control"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary float-right">{{selectedBook.id ? 'Actualizar' : 'Crear'}}</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,24 +13,48 @@ export class ListBooksComponent implements OnInit {
     private dataService: DataApiService
   ) { }
 
-  books: Book[]
+  books: Book[];
+  selectedBook: Book;
 
   ngOnInit() {
-    this.getListBooks()
+    this.getListBooks();
+    this.selectedBook = {
+      id: '',
+      titulo: '',
+      idioma: '',
+      descripcion: '',
+      portada: '',
+      precio: '',
+      link_amazon: '',
+      autor: '',
+      oferta: 0
+    };
   }
 
   getListBooks(): void{
     this.dataService.getAllBooks().subscribe(
       (books: Book[]) => {
         this.books = books;
-        console.log("GetAllBooks..")
-        console.log(this.books)
       }
     )
   }
 
-  onUpdateBook(){
+  onUpdateBook(book: Book){
+    this.selectedBook = {...book};
+  }
 
+  onCreateBook(){
+    this.selectedBook = {
+      id: '',
+      titulo: '',
+      idioma: '',
+      descripcion: '',
+      portada: '',
+      precio: '',
+      link_amazon: '',
+      autor: '',
+      oferta: 0
+    }
   }
   onDeleteBook(id:string): void{
     if(confirm("Are you sure to delete this book?")){
