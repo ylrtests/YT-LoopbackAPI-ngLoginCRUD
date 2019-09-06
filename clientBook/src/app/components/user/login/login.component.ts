@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
   onLogin(){
     this.authService.loginUser(this.user).subscribe(
       (data) => {
-        console.log("hola logged in:");
-        console.log(data);
         this.authService.setUser(data.user);
         this.authService.setToken(data.id);
         this.router.navigate(['/user/profile'])

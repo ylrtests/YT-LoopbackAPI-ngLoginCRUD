@@ -1,5 +1,7 @@
 <app-navbar></app-navbar>
-<app-hero></app-hero>
+<app-hero [hidden] ="heroIsHidden"></app-hero>
+<!-- Gap between Nav and Container when there's no hero -->
+<div [hidden] ="!heroIsHidden" class="pt-5 pb-4"></div>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

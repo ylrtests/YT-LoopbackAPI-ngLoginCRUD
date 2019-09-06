@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 
+
 import { Book } from '../../models/Book';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,9 @@ import { Book } from '../../models/Book';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService) { }
+  constructor(
+    private dataApi: DataApiService
+    ) {}
 
   private books: Book[];
 
@@ -19,6 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   getListBooks(){
+    
     this.dataApi.getAllBooks().subscribe( 
       (books: Book[]) => {
         this.books = books;

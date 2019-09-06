@@ -37,7 +37,6 @@ export class DetailsBookComponent implements OnInit {
     this.dataApi.getBookById(id).subscribe(
       (book: Book) => {
         this.book = book;
-        console.log(this.book)
       }
     )
   }

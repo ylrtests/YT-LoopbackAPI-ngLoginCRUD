@@ -57,12 +57,11 @@ export class ListBooksComponent implements OnInit {
     }
   }
   onDeleteBook(id:string): void{
-    if(confirm("Are you sure to delete this book?")){
+    if(confirm("¿Seguro quieres eliminar este libro?")){
       this.dataService.deleteBook(id).subscribe(
         (res) => {
-          console.log("Book has been deleted");
-          console.log(res)
-          this.getListBooks()
+          console.log("Libro eliminado");
+          this.getListBooks();
         }
       )
     }

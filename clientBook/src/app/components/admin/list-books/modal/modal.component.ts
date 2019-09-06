@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit {
 
   onSaveBook(bookForm: NgForm): void{
     if(this.selectedBook.id){
-      // Actualizar libro
+      // ACTUALIZAR LIBRO
       this.dataService.updateBook(bookForm.value, this.selectedBook.id).subscribe(
         () => {
           location.reload();
@@ -35,8 +35,7 @@ export class ModalComponent implements OnInit {
       )
     }
     else{
-      // Crear libro
-      console.log("Creo nuevo")
+      // CREAR LIBRO
       this.dataService.saveBook(bookForm.value).subscribe(
         () => {
           location.reload();

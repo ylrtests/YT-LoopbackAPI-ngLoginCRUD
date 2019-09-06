@@ -23,7 +23,6 @@ export class OffersComponent implements OnInit {
     this.dataApi.getOffers().subscribe(
       (books: Book[]) => {
         this.books = books;
-        console.log("Books offered: "+this.books)
       }
     )
   }

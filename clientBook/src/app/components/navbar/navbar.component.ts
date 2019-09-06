@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 
@@ -8,22 +8,33 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
   constructor(
     private authService: AuthService
   ) { }
 
   public appName = "Books Store";
+  isLogged: boolean = false;
 
   ngOnInit() {
+    this.onCheckUser();
   }
 
   onLogout(){
     this.authService.logoutUser().subscribe(
       (res) => {
         console.log("Logout...")
-        console.log(res)
       }
     )
+  }
+
+  onCheckUser ():void{
+    if(this.authService.getCurrentUser() === null) {
+      this.isLogged = false
+    }
+    else{
+      this.isLogged = true;
+    }
   }
 
 }
