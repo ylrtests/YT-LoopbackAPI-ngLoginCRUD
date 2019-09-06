@@ -6,22 +6,39 @@
                     <div class="card">
                         <div class="card-body text-center">
                             <form 
-                            (ngSubmit) = "onRegister()"
-                            #formRegister = "ngForm">
-                                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                            (ngSubmit) = "f.valid && onRegister(f)"
+                            #f = "ngForm">
+                                <code>Form is valid: {{f.valid | json}}</code>
+                                <h1 class="h3 mb-3 font-weight-normal"  *ngIf="!hasError">Register</h1>
+                                <div class="alert alert-danger" role="alert" *ngIf="hasError">{{errorMessage}}</div>
                                 <div class="form-group">
-                                    <input type="text" id="name" name="name" 
-                                    class="form-control" placeholder="Name" [(ngModel)]="user.name" required>
+                                    <input type="text" #name="ngModel" name="name" placeholder="Name"
+                                    class="form-control" [(ngModel)]="user.name"  required minlength="2"
+                                    [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched) }">
+                                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                                        <div *ngIf="name.errors.required">Ingresa tu nombre</div>
+                                        <div *ngIf="name.errors.minlength">Ingresa un nombre válido</div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                        <input type="email" id="email" name="email" 
-                                        class="form-control" [(ngModel)]="user.email" placeholder="Email" required>
+                                        <input type="email" #email="ngModel" name="email"  class="form-control" placeholder="Email"
+                                        [(ngModel)]="user.email" required email minlength="5"
+                                        [ngClass] = "{'is-invalid': email.invalid && (email.dirty || email.touched)}">
+                                        <div *ngIf = "email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                                <div *ngIf = "email.errors.required">Ingresa tu email</div>
+                                                <div *ngIf = "email.errors.minlength || email.errors.email">Ingresa un email válido</div>
+                                        </div>
                                 </div>
                                 <div class="form-group">
-                                        <input type="password" id="password" name="password" 
-                                        class="form-control" [(ngModel)]="user.password" placeholder="Password" required>
+                                        <input type="password" #password="ngModel" name="password" placeholder="Password"
+                                        class="form-control" [(ngModel)]="user.password" required minlength="6"
+                                        [ngClass] = "{'is-invalid': password.invalid && (password.dirty || password.touched)}">
+                                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                                            <div *ngIf = "password.errors.required">Ingresa una contraseña</div>
+                                            <div *ngIf = "password.errors.minlength">La contraseña debe tener minimo 6 caracteres</div>
+                                        </div>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+                                <button type="submit" [disabled] = "!f.valid" class="btn btn-lg btn-primary btn-block">Register</button>
                                 <div>
                                     <a routerLink="/user/login">Do you have an account?</a>
                                 </div>

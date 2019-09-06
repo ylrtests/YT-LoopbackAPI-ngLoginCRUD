@@ -5,21 +5,33 @@
                 <div class="card-login">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form 
-                            (ngSubmit) = "onLogin()"
-                            #formlogin = "ngForm">
-                                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+                            <form #f="ngForm" (ngSubmit)="f.form.valid && onLogin(f)">
+                                <code>Form is valid: {{f.valid | json}}</code>
+                                <div class="alert alert-danger" role="alert" *ngIf = "hasError">{{errorMessage}}</div>
+                                <h1 class="h3 mb-3 font-weight-normal" *ngIf="!hasError">Login</h1>
                                 <div class="form-group">
-                                        <input type="email" id="email" name="email" 
-                                        class="form-control" [(ngModel)]="user.email" placeholder="Email" required>
+                                    <input type="email" #email="ngModel" name="email" placeholder="Email"
+                                        class="form-control" required email [(ngModel)]="user.email"
+                                        [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched) }">
+                                      
+                                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                        <div *ngIf="email.errors.required">Ingresa tu correo electrónico</div>
+                                        <div *ngIf="email.errors.email">Ingresa un email válido</div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                        <input type="password" id="password" name="password" 
-                                        class="form-control" [(ngModel)]="user.password" placeholder="Password" required>
+                                    <input type="password" #password="ngModel" name="password" placeholder="Password"
+                                        class="form-control" required minlength="6" [(ngModel)]="user.password"
+                                        [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched) }">
+                                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                                        <div *ngIf="password.errors.required">Ingresa tu contraseña</div>
+                                        <div *ngIf="password.errors.minlength">La contraseña debe tener al menos 6
+                                            caracteres</div>
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                                <button type="submit" [disabled]="!f.valid" class="btn btn-lg btn-primary btn-block">Iniciar sesión</button>
                                 <div>
-                                    <a routerLink="/user/login">Create account instead</a>
+                                    <a routerLink="/user/login">¿Nuevo? Crea una cuenta.</a>
                                 </div>
                             </form>
                         </div>
