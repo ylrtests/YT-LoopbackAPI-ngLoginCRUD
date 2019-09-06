@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 import { Book } from 'src/app/models/Book';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-list-books',
@@ -10,13 +11,16 @@ import { Book } from 'src/app/models/Book';
 export class ListBooksComponent implements OnInit {
 
   constructor(
-    private dataService: DataApiService
+    private dataService: DataApiService,
+    private spinnerService: NgxSpinnerService
   ) { }
 
   books: Book[];
   selectedBook: Book;
+  page: number = 1;
 
   ngOnInit() {
+    this.spinnerService.show();
     this.getListBooks();
     this.selectedBook = {
       id: '',
@@ -35,6 +39,10 @@ export class ListBooksComponent implements OnInit {
     this.dataService.getAllBooks().subscribe(
       (books: Book[]) => {
         this.books = books;
+        this.spinnerService.hide();
+      },
+      () => {
+        this.spinnerService.hide();
       }
     )
   }

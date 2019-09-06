@@ -17,7 +17,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor ="let book of books; index as i">
+                <tr *ngFor ="let book of books | paginate: { itemsPerPage: 5, currentPage: page }; index as i; ">
                     <th scope="row">{{i+1}}</th>
                     <td>{{book.titulo}}</td>
                     <td>{{book.autor}}</td>
@@ -29,8 +29,12 @@
                 </tr>
             </tbody>
         </table>
+        <pagination-controls 
+            (pageChange)="page = $event" 
+            previousLabel="Anterior"
+            nextLabel="Siguiente"></pagination-controls>
     </div>
 </section>
 
-
 <app-modal [selectedBook] = selectedBook></app-modal>
+<ngx-spinner></ngx-spinner>
